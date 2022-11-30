@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import products from "./product.json"
+import { useState,useEffect } from 'react'
+import Product from './components/Product';
+
 
 function App() {
+  const [money, setMoney] = useState(100)  
+
+
+  useEffect(() => {
+  
+  }, [])
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header money ={money}/>
+      {products.map((product) => (
+        <Product key={product.id} product={product} money={money} setMoney={setMoney}/>))
+      }
+    </>
   );
 }
 
